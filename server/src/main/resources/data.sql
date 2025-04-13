@@ -1,4 +1,4 @@
-insert into people(name, age) values
+insert into people(people_name, age) values
     ('John', 30),
     ('Jane', 25),
     ('Alice', 28),

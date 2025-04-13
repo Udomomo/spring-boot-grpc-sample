@@ -2,7 +2,9 @@ import com.google.protobuf.gradle.id
 
 val grpcVersion: String by extra("1.70.0")
 val grpcKotlinVersion: String by extra("1.4.0")
-val protobufVersion: String by extra("4.30.2")
+// protocはv4.26で破壊的変更が入り、grpc-javaがまだそれに対応していないので、v3.25を使用する。
+// https://github.com/grpc/grpc-java/issues/10976
+val protobufVersion: String by extra("3.25.5")
 
 plugins {
 	kotlin("jvm") version "1.9.25"
@@ -30,12 +32,14 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
-	implementation("com.h2database:h2:2.3.232")
+	implementation("com.h2database:h2:2.2.224")
 	implementation("org.jetbrains.exposed:exposed-spring-boot-starter:0.60.0")
 	implementation("net.devh:grpc-server-spring-boot-starter:3.1.0.RELEASE")
 	implementation("io.grpc:grpc-protobuf:${grpcVersion}")
 	// Kotlinのstub実装を生成するために必要。
 	implementation("io.grpc:grpc-kotlin-stub:${grpcKotlinVersion}")
+	// gRPCの通信制御に必要。
+	implementation("io.grpc:grpc-netty-shaded:${grpcVersion}")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
