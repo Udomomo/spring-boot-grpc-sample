@@ -36,10 +36,18 @@ dependencies {
 	implementation("io.grpc:grpc-protobuf:${grpcVersion}")
 	// Kotlinのstub実装を生成するために必要。
 	implementation("io.grpc:grpc-kotlin-stub:${grpcKotlinVersion}")
-	implementation(project(":proto"))
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+}
+
+// protoファイルをprojectの外に置いているので、pathを指定して認識させる。
+sourceSets {
+	main {
+		proto {
+			srcDir("${rootDir}/proto")
+		}
+	}
 }
 
 protobuf {
