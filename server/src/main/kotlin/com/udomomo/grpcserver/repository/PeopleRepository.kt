@@ -10,11 +10,11 @@ class PeopleRepository {
             .toList()
     }
 
-    fun save(people: PeopleVO): PeopleVO {
-        val entity = PeopleEntity.new {
-            name = people.name
-            age = people.age
+    fun save(name: String, age: Int) {
+        PeopleEntity.new {
+            this.name = name
+            this.age = age
         }
-        return entity.toVO()
+        return
     }
 }

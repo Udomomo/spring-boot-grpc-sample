@@ -5,22 +5,30 @@ import "google/protobuf/empty.proto";
 package people;
 
 service PeopleService {
-  rpc ListPeople(google.protobuf.Empty) returns (ListPeopleResponse);
+  rpc ListPeople(ListPeopleRequest) returns (ListPeopleResponse);
 
-  rpc CreatePeople(CreatePeopleRequest) returns (google.protobuf.Empty);
+  rpc CreatePeople(CreatePeopleRequest) returns (CreatePeopleResponse);
+}
+
+message ListPeopleRequest {
+  google.protobuf.Empty empty = 1;
 }
 
 message ListPeopleResponse {
   repeated People people = 1;
 }
 
-message People {
-  int64 id = 1;
-  string name = 2;
-  int32 age = 3;
-}
-
 message CreatePeopleRequest {
   string name = 1;
   int32 age = 2;
+}
+
+message CreatePeopleResponse {
+  google.protobuf.Empty empty = 1;
+}
+
+message People {
+  int32 id = 1;
+  string name = 2;
+  int32 age = 3;
 }
