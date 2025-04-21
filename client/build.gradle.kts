@@ -36,6 +36,8 @@ dependencies {
 	implementation("io.grpc:grpc-protobuf:${grpcVersion}")
 	// Kotlinのstub実装を生成するために必要。
 	implementation("io.grpc:grpc-kotlin-stub:${grpcKotlinVersion}")
+	// gRPCの通信制御に必要。
+	implementation("io.grpc:grpc-netty-shaded:${grpcVersion}")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
