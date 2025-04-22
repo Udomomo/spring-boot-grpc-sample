@@ -1,0 +1,20 @@
+[versions]
+# protocはv4.26で破壊的変更が入り、grpc-javaがまだそれに対応していないので、v3.25を使用する。
+# https://github.com/grpc/grpc-java/issues/10976
+protobuf= "3.25.5"
+grpc = "1.70.0"
+grpc-kotlin = "1.4.0"
+grpc-spring-boot-starter = "3.1.0.RELEASE"
+exposed-spring-boot-starter = "0.60.0"
+
+[libraries]
+grpc-protobuf = { module = "io.grpc:grpc-protobuf", version.ref = "grpc" }
+grpc-kotlin-stub = { module = "io.grpc:grpc-kotlin-stub", version.ref = "grpc-kotlin" }
+grpc-netty-shaded = { module = "io.grpc:grpc-netty-shaded", version.ref = "grpc" }
+
+[plugins]
+kotlin = { id = "org.jetbrains.kotlin.jvm", version = "1.9.25" }
+kotlin-plugin-spring = { id = "org.jetbrains.kotlin.plugin.spring", version = "1.9.25" }
+spring-boot = { id = "org.springframework.boot", version = "3.4.4" }
+spring-dependency-management = { id = "io.spring.dependency-management", version = "1.1.7" }
+protobuf = { id = "com.google.protobuf", version = "0.9.5" }
