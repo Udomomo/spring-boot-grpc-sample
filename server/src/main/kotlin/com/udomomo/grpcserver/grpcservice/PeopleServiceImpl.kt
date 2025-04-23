@@ -20,6 +20,7 @@ class PeopleServiceImpl(
 
         peopleRepository.save(request.name, request.age)
 
+        logger.info("Successfully created people | name=${request.name}, age=${request.age}")
         return PeopleOuterClass.CreatePeopleResponse.newBuilder()
             .setEmpty(Empty.getDefaultInstance())
             .build()
@@ -38,6 +39,7 @@ class PeopleServiceImpl(
                 .build()
         }
 
+        logger.info("Successfully listed people | peopleCount=${peoples.size}")
         return PeopleOuterClass.ListPeopleResponse.newBuilder()
             .addAllPeople(peoples)
             .build()
